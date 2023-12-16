@@ -4,3 +4,5 @@ mongoose.connect(
 )
 
 module.exports = mongoose
+module.exports = mongoose
+
