@@ -1,18 +1,17 @@
 require("dotenv").config()
 require("./module/db.module")
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const app = express();
+const cors = require('cors')
 
+// api middleware routes
+const categoryRouter = require('./routes/category.route');
 
-var categoryRouter = require('./routes/category.route');
-
-var app = express();
-
-
-
+app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
