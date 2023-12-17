@@ -11,7 +11,7 @@ const cors = require('cors')
 // api middleware routes
 const categoryRouter = require('./routes/category.route');
 
-app.use(cors())
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
