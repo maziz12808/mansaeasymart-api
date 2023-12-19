@@ -6,10 +6,14 @@ const productSchema = new Schema({
         type: Schema.ObjectId, 
         ref: "Category" 
     },
-    brand: { 
-        type: Schema.ObjectId, 
-        ref: "Brand" 
+    childrenCategory: { 
+        type: String, 
+        required: [true,"title is requied"] 
     },
+    // brand: { 
+    //     type: Schema.ObjectId, 
+    //     ref: "Brand" 
+    // },
     title: {
         type: String, 
         required: [true,"title is requied"]
@@ -40,5 +44,8 @@ const productSchema = new Schema({
         default: Date.now
     }
 })
+
+// productSchema.pre('findOneAndUpdate', function() {
+// });
 
 module.exports = mongoose.model("Product",productSchema)

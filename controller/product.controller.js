@@ -27,7 +27,7 @@ exports.update = async (req,res)=>{
     const id = req.params.id
     const data = req.body
     try{
-        const product = await Product.findByIdAndUpdate({_id: id},data,{new: true})
+        const product = await Product.findOneAndUpdate({_id: id},data,{new: true})
         res.status(201).json(product)
     }
     catch(err)
