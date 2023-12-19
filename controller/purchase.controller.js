@@ -14,7 +14,7 @@ exports.fetch = async (req,res)=>{
 exports.create = async (req,res)=>{
     try{
         const purchase = new Purchase(req.body)
-        await Purchase.save()
+        await purchase.save()
         res.status(200).json(purchase)
     }
     catch(err)

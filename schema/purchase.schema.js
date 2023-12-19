@@ -3,20 +3,24 @@ const { Schema } = mongoose
 
 const purchaseSchema = new Schema({
     category: { 
-        type: Schema.ObjectId, 
+        type: Schema.Types.ObjectId, 
         ref: "Category" 
     },
-    brand: { 
-        type: Schema.ObjectId, 
-        ref: "Brand" 
+    childrenCategory: { 
+        type: String, 
+        required: [true,"childrenCategory is required!"] 
     },
+    // brand: { 
+    //     type: Schema.ObjectId, 
+    //     ref: "Brand" 
+    // },
     title: {
         type: String, 
         required: [true,"title is requied"]
     },
-    price: {
+    purchasePrice: {
         type: Number, 
-        required: [true, "price is required"]
+        required: [true, "purchase price is required"]
     },
     stock: {
         type: Number, 
