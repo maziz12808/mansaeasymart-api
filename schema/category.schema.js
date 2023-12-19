@@ -6,7 +6,7 @@ const categorySchema = new Schema({
         type: String,
         required: [true,"title is required"]
     },
-    childrenCategory: [String],
+    childrenCategory: {type: Array},
     createdAt : {
         type: Date,
         default: Date.now
@@ -17,5 +17,7 @@ const categorySchema = new Schema({
     }
 
 });
+
+
 
 module.exports = mongoose.model("Category",categorySchema)

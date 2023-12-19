@@ -25,7 +25,14 @@ exports.update = async (req,res)=>{
     const id = req.params.id
     const data = req.body
     try{
-        const category = await Category.findByIdAndUpdate({_id: id},data,{new: true})
+        const findCategory = await Category.findById(id)
+        let childrenCategory = []
+        for(let cat of findCategory.childrenCategory)
+        {
+            childrenCategory.push(cat)
+        }
+        childrenCategory.push(data.childrenCategory)
+        const category = await Category.findByIdAndUpdate({_id: id},{childrenCategory})
         res.status(201).json(category)
     }
     catch(err)
