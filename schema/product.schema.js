@@ -2,17 +2,13 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose
 
 const productSchema = new Schema({
-    category: { 
-        type: Schema.ObjectId, 
-        ref: "Category" 
-    },
-    brand: { 
-        type: Schema.ObjectId, 
-        ref: "Brand" 
-    },
-    title: {
-        type: String, 
-        required: [true,"title is requied"]
+    // brand: { 
+    //     type: Schema.ObjectId, 
+    //     ref: "Brand" 
+    // },
+    purchaseProduct: {
+        type: Schema.Types.ObjectId,
+        ref: "Purchase"
     },
     price: {
         type: Number, 
@@ -21,10 +17,6 @@ const productSchema = new Schema({
     discount: {
         type: Number, 
         default: 0
-    },
-    stock: {
-        type: Number, 
-        required: [true,"stock is required"]
     },
     image: [String],
     description: {
@@ -40,5 +32,7 @@ const productSchema = new Schema({
         default: Date.now
     }
 })
-
+productSchema.post('find', async function(docs,next) {
+    console.log(docs);
+});
 module.exports = mongoose.model("Product",productSchema)

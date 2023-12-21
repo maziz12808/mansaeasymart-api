@@ -2,7 +2,11 @@ const Product = require("../schema/product.schema")
 
 exports.fetch = async (req,res)=>{
     try{
-        const products = await Product.find(req.query) 
+        const products = await Product.find(req.query)
+        .populate({ 
+            path: 'purchaseProduct',
+            populate: { path: 'category' }
+        })
         if(!products.length) return res.status(404).json({message: "product not found"})
         
         res.status(201).json(products)

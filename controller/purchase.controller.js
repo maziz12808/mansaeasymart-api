@@ -2,7 +2,7 @@ const Purchase = require("../schema/purchase.schema");
 
 exports.fetch = async (req,res)=>{
     try{
-        const purchase = await Purchase.find(req.query)
+        const purchase = await Purchase.find(req.query).populate("category")
         res.status(200).json(purchase)
     }
     catch(err)
